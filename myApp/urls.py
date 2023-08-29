@@ -1,6 +1,6 @@
 from django.urls import path
 # Importing custom view
-from .views import welcome, farewell, greet, customgreet, associate, get_koder, get_koders
+from .views import welcome, farewell, greet, customgreet, associate, get_koder, get_koders, mutiple_paramters
 
 # urls
 
@@ -13,5 +13,6 @@ urlpatterns = [
     path("custom_greet/<str:name>", customgreet),
     path("associate_type/<str:type>", associate),
     path("koders/<int:id>", get_koder),
-    path("koders/", get_koders)
+    path("koders/", get_koders),
+    path("mutiple_paramters/<str:name>/<str:type>/", mutiple_paramters),
 ]

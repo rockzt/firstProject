@@ -1,0 +1,8 @@
+<!--Using DTL -> Django Template Language-->
+<!--upper ->  convert variable to upper case-->
+<!--default ->  set a default value when the previous one is not received-->
+<!--length ->  calculates the variable length-->
+<!--truncatechars ->  truncate value where indicated-->
+<h1>Hola {{name|upper}} eres un {{type|default:"Entry Level"}}</h1>
+<h2>{{type|length}}</h2>
+<h2>{{name|truncatechars:4}}</h2>

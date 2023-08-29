@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Import HTTPResponse
 from django.http import HttpResponse
+from django.template import loader  # importing to use template loader
 
 # Create your views here.
 # Views are functions
@@ -60,6 +61,8 @@ def greet(request):
 
 def customgreet(request, name):
     # Response
+    context =  {"name":name}  # Used to pass values to templates
+    template = loader.get_template("base.html")
     html = f"""
     <html>
     <body>
@@ -72,7 +75,7 @@ def customgreet(request, name):
     </body>
     </html>
     """
-    return HttpResponse(html)
+    return HttpResponse(template.render(context, request))
 
 
 def associate(request, type):
@@ -145,3 +148,12 @@ def get_koders(request):
     """
 
     return HttpResponse(html)
+
+def mutiple_paramters(request, name, type):
+    # Response
+    context = {
+        "name": name,
+        "type": type
+    }  # Used to pass values to templates
+    template = loader.get_template("mutiplebase.html")
+    return HttpResponse(template.render(context, request))

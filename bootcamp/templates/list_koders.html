@@ -1,0 +1,22 @@
+<!--Using tags to itereate over context values -->
+<div style="text-align: center;">
+    <h1>General Info</h1>
+    <span><b>Course: {{bootcamp.name}}</b></span>
+    <br>
+    <span><b>Module: {{bootcamp.module}}</b></span>
+    <br>
+    <h2>Hello Koders:</h2>
+    {% for koder in koders %}
+        <p>name: {{koder.name}}</p>
+        <p>generation: {{koder.generation}}</p>
+        <p>bootcamp: {{koder.bootmcap}}</p>
+        {% if koder.is_active %}
+        <p style="color: #006b1b">Active {{koder.is_active}}</p>
+        {% else %}
+        <p style="color: #a41515">Active {{koder.is_active}}</p>
+        {% endif %}
+        <hr/>
+        <br>
+    {% endfor %}
+    <br>
+</div>
