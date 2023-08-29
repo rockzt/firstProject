@@ -63,27 +63,27 @@
 }
 </style>
 <body>
-<!--Using tags to itereate over context values -->
+<!--Using tags to iterate over context values -->
 <div class="container-fluid">
     <div class="row justify-content-evenly">
-        <div class="card text-center mb-5">
-          <div class="card-body">
+        <div class="container-fluid p-5 bg-primary text-white text-center mb-5">
+            <h2 class="text-center mb-1">Koders List</h2>
+            <!--
             <h2 class="mb-3">General Info</h2>
-              <span><b>Course: </b>{{bootcamp.name}}</span>
-              <br>
-              <span><b>Module: </b>{{bootcamp.module}}</span>
-              <br>
-          </div>
+            <span><b>Course: </b>{{bootcamp.name}}</span>
+            <br>
+            <span><b>Module: </b>{{bootcamp.module}}</span>
+            <br>
+            -->
         </div>
         <br>
-    <h2 class="text-center mb-5">Koders List:</h2>
         <br>
         <br>
         <br>
     {% for koder in koders %}
         {% if koder.is_active %}
         <div class="col-md-4">
-            <div class="card p-3 mb-2 border border-success">
+            <div class="card p-3 mb-2 border border-success shadow mb-4">
                 <div class="d-flex justify-content-between">
                     <div class="d-flex flex-row align-items-center">
                         <div class="icon"> <i class="fa-solid fa-user"></i> </div>
@@ -106,7 +106,7 @@
         </div>
         {% else %}
         <div class="col-md-4">
-            <div class="card p-3 mb-2 border border-danger">
+            <div class="card p-3 mb-2 border border-danger shadow-sm mb-4">
                 <div class="d-flex justify-content-between">
                     <div class="d-flex flex-row align-items-center">
                         <div class="icon"> <i class="fa-regular fa-user"></i> </div>
