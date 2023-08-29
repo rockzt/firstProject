@@ -41,7 +41,10 @@ INSTALLED_APPS = [
 
     # Custom app
     "myApp",
-    "bootcamp"
+    "bootcamp",
+
+    # Bootstrap library link
+    "bootstrap5"
 ]
 
 MIDDLEWARE = [
