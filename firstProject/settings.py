@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Custom app
+    "myApp",
+    "bootcamp"
 ]
 
 MIDDLEWARE = [
@@ -56,7 +61,10 @@ ROOT_URLCONF = 'firstProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, "myApp", "templates"), # Where templates are located in our custom myApp directory
+            os.path.join(BASE_DIR, "bootcamp", "templates") # Where templates are located in our custom myApp directory
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
