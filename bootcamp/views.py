@@ -23,7 +23,7 @@ def get_koder(request, id):
         "koders": find_koder
     }
     # Calling template
-    template = loader.get_template("list_koders.html")
+    template = loader.get_template("templates/list_koders.html")
 
     return HttpResponse(template.render(context, request))
 
@@ -40,7 +40,35 @@ def list_koder(request):
         ]
     }
     #Calling template
-    template = loader.get_template("list_koders.html")
+    template = loader.get_template("templates/list_koders.html")
 
+
+    return HttpResponse(template.render(context, request))
+
+
+def list_mentors(request):
+    mentors = [
+        {
+            "name": "Benjamin",
+            "last_name": "Aguilar",
+            "is_active": True
+        },
+        {
+            "name": "Alfredo",
+            "last_name": "Altamirano",
+            "is_active": True
+        },
+        {
+            "name": "Charles",
+            "last_name": "Lopez",
+            "is_active": False
+        },
+    ]
+
+    context = {
+        "mentors": mentors
+    }
+    # Calling template
+    template = loader.get_template("templates/list_mentors.html")
 
     return HttpResponse(template.render(context, request))

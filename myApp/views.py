@@ -62,7 +62,7 @@ def greet(request):
 def customgreet(request, name):
     # Response
     context =  {"name":name}  # Used to pass values to templates
-    template = loader.get_template("base.html")
+    template = loader.get_template("templates/base.html")
     html = f"""
     <html>
     <body>

@@ -1,11 +1,16 @@
+<!--CHILD TEMPLATE INHERIT FROM base.html-->
 <!DOCTYPE html>
+{% extends "templates/base.html" %}
 <html>
+{% block head %}
 <head>
   <title>Koders | General Info</title>
   {% load bootstrap5 %}
   {% bootstrap_css %}
   {% bootstrap_javascript %}
 </head>
+{% endblock head %}
+{% block styles %}
 <style>
     /*CARD SECTION STYLES*/
     body {
@@ -63,12 +68,17 @@
         color: #a5aec0
     }
 </style>
+{% endblock styles %}
 <body>
 <!--Using tags to iterate over context values -->
+{% block content %}
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="container-fluid p-5 bg-primary text-white text-center mb-5 row justify-content-center">
             <h2 class="text-center mb-4">General Info</h2>
+            {% block title %}
+            <h5>From bootcamp<hr/></h5>
+            {% endblock title %}
             <!--ICONS ALERT SECTION-->
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                 <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -153,11 +163,14 @@
     <br>
     </div>
 </div>
+{% endblock content %}
+{% block scripts %}
 <script>
     /*Automatic Hide Alert Functionality*/
     setTimeout(function() {
         bootstrap.Alert.getOrCreateInstance(document.querySelector(".custom-alert")).close();
     }, 3000)
 </script>
+{% endblock scripts %}
 </body>
 </html>

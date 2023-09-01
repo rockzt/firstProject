@@ -1,0 +1,28 @@
+<!-- TEMPLATE PARENT -->
+{# this is a comment #}
+{% block head %}
+{% endblock head %}
+
+{% block styles %}
+{% endblock styles %}
+
+<div style="text-align: center;">
+    <h1>
+        Bienvenidos a base.html!!
+        <hr>
+    </h1>
+
+    <!-- DYNAMIC BLOCK CAN BE MODIFY BY CHILDS -->
+</div>
+{% block content %}
+{% block title %}
+ <h2>From bootcamp</h2>
+{% endblock title %}
+{% endblock content %}
+{% block footer %}
+<footer class="text-center">
+    <small>@All Rights Reserved</small>
+</footer>
+{% endblock footer %}
+{% block scripts %}
+{% endblock scripts %}

@@ -65,8 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "myApp", "templates"), # Where templates are located in our custom myApp directory
-            os.path.join(BASE_DIR, "bootcamp", "templates") # Where templates are located in our custom myApp directory
+            os.path.join(BASE_DIR), # Where templates are located in our custom myApp directory
         ],
         'APP_DIRS': True,
         'OPTIONS': {
