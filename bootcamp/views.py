@@ -1,8 +1,7 @@
-from django.shortcuts import render
-
 # Create your views here.
 # Import HTTPResponse
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.template import loader
 
 # Importing models to use DB data
