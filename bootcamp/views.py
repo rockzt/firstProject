@@ -13,13 +13,16 @@ from bootcamp.models import Koder
 
 
 def get_koder(request, id):
-    """
-    koders = [
+    """koders = [
         {"id": 1 ,"name": "rock", "generation": "2021", "bootmcap": "python back end", "is_active": True, },
         {"id": 2 ,"name": "david", "generation": "2023", "bootmcap": "front end", "is_active": True, },
         {"id": 3 ,"name": "ashley", "generation": "2019", "bootmcap": "swift", "is_active": False, }
     ]
     find_koder = [koder for koder in koders if koder["id"] == id]
+
+    :param request: 
+    :param id: 
+
     """
     try:
         find_koder = Koder.objects.get(pk=id)
@@ -41,6 +44,11 @@ def get_koder(request, id):
 
 
 def list_koder(request):
+    """
+
+    :param request: 
+
+    """
     # Response
     koders = Koder.objects.all()
     print(koders)
@@ -52,6 +60,11 @@ def list_koder(request):
 
 
 def list_mentors(request):
+    """
+
+    :param request: 
+
+    """
     mentors = [
         {"name": "Benjamin", "last_name": "Aguilar", "is_active": True},
         {"name": "Alfredo", "last_name": "Altamirano", "is_active": True},
