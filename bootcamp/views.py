@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 
-# Importing models to use DB data
 from bootcamp.models import Koder
+# Importing models to use DB data
 
 # Create your views here.
 # Views are functions
