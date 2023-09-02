@@ -22,14 +22,17 @@ def get_koder(request, id):
     '''
     try:
         find_koder =Koder.objects.get(pk=id)
+        context = {
+            "bootcamp": {"name": "Python", "module": "Django"},
+            "koders": [find_koder]
+        }
     except Koder.DoesNotExist:
         find_koder = ""
+        context = {
+            "bootcamp": {"name": "Python", "module": "Django"},
+            "koders": find_koder
+        }
 
-    print(find_koder)
-    context = {
-        "bootcamp": {"name": "Python", "module": "Django"},
-        "koders": find_koder
-    }
     # Calling template
     template = loader.get_template("templates/list_koders.html")
 
