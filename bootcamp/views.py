@@ -10,8 +10,9 @@ from bootcamp.models import Koder
 # Create your views here.
 # Views are functions
 # view recieve client's request
-def get_koder(request, id):
 
+
+def get_koder(request, id):
     '''
     koders = [
         {"id": 1 ,"name": "rock", "generation": "2021", "bootmcap": "python back end", "is_active": True, },
@@ -21,7 +22,7 @@ def get_koder(request, id):
     find_koder = [koder for koder in koders if koder["id"] == id]
     '''
     try:
-        find_koder =Koder.objects.get(pk=id)
+        find_koder = Koder.objects.get(pk=id)
         context = {
             "bootcamp": {"name": "Python", "module": "Django"},
             "koders": [find_koder]
@@ -44,12 +45,11 @@ def list_koder(request):
     koders = Koder.objects.all()
     print(koders)
     context = {
-        "bootcamp": { "name":"Python", "module":"Django" },
+        "bootcamp": {"name": "Python", "module": "Django"},
         "koders": koders
     }
-    #Calling template
+    # Calling template
     template = loader.get_template("templates/list_koders.html")
-
 
     return HttpResponse(template.render(context, request))
 
