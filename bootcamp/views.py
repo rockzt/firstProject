@@ -20,8 +20,8 @@ def get_koder(request, id):
     ]
     find_koder = [koder for koder in koders if koder["id"] == id]
 
-    :param request: 
-    :param id: 
+    :param request:
+    :param id:
 
     """
     try:
@@ -46,7 +46,7 @@ def get_koder(request, id):
 def list_koder(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     # Response
@@ -62,7 +62,7 @@ def list_koder(request):
 def list_mentors(request):
     """
 
-    :param request: 
+    :param request:
 
     """
     mentors = [
