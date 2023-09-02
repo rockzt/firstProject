@@ -48,4 +48,30 @@ class Koder(models.Model):
 
     # Function that represents a Koder
     def __str__(self):
-        return f"FirstName -> {self.first_name}, LastName -> {self.last_name}"
+        return f"FirstName -> {self.first_name}, LastName -> {self.last_name}, Email -> {self.email}"
+
+'''
+from bootcamp.models import Koder
+import datetime
+Koder.objects.create(first_name='rito', last_name='yagami', generation='2023',email='rito@gmail.com',phone='3245678',address='takome #130 tokyo, JPN', birthdate=datetime.datetime(2000,09,04))
+select_koders_query = Koder.objects.all()
+# Accesing List Elements
+print(select_koders_query[0].email)  
+print(select_koders_query[0].name)
+print(select_koders_query[1].email)
+print(select_koders_query[1].name)
+# Can also access to elements not declared on __str__()
+print(select_koders_query[1].created_at)
+print(select_koders_query[0].birthdate)
+
+# Selecting specific record from DB, PK to auto-created value or can use another field that is unique, return 1 value
+Koder.objects.get(pk=2)
+Koder.objects.get(email="rock@gmail.com")
+
+# Acts like where clause, returns a list
+Koder.objects.filter(first_name="rock")
+Koder.objects.filter(first_name="rock")[0].last_name   #Accesing specific value
+
+# Exclude records
+Koder.objects.exclude(first_name="rito")
+'''
