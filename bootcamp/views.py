@@ -42,7 +42,6 @@ def get_koder(request, id):
 def list_koder(request):
     # Response
     koders = Koder.objects.all()
-    print(koders)
     context = {
         "bootcamp": { "name":"Python", "module":"Django" },
         "koders": koders

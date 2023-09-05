@@ -112,14 +112,14 @@ koders - pertenece a una generación (en este caso solo pueden pertenecer a una 
 Mentores - pertenece a varias generaciones -> N mentors - N generations
 Generaciones - pertenece a un bootcamp  -> 1 bootcamp - N generations
 Bootcamps
-        Creating Records usin Models ORM with relations
+        Creating Records using Models ORM with relations
 from bootcamp.models import Bootcamp, Generation, Mentor, Koder
 
- bootcamp = Bootcamp.objects.create(name="python")
- generation = Generation.objects.create(number=1, bootcamp=bootcamp)
+ bootcamp_1 = Bootcamp.objects.create(name="ruby")
+ generation_1 = Generation.objects.create(number=1, bootcamp=bootcamp)
  
- Bootcamp.objects.create(name="javascript")
- generation_js = Generation.objects.create(number=1, bootcamp_id=2)
+ Bootcamp.objects.create(name="Go")
+ generation_go = Generation.objects.create(number=2, bootcamp_id=2)
  
  generation_js.__dict__
  
@@ -127,7 +127,7 @@ from bootcamp.models import Bootcamp, Generation, Mentor, Koder
  generation.bootcamp.name
  generation_js.bootcamp.name
  
-        Advanced queries
+        Advanced queries Relations
 Generation.objects.filter(bootcamp=bootcamp)
 bootcamp.generations.all()
 
@@ -141,11 +141,4 @@ generation_py.mentors.add(mentor)
 generation.mentor.all()
 
 geneartion.mentor.all()
-
-
-
-
-
-
- 
 '''
