@@ -7,7 +7,7 @@ from django.db import models
 # Cada propiead de la clase(modelo) representa un atributo en la tabla
 """
                                 Relaciones
-La foreign key se pone en la N en las relaciones 1 - N                                
+La foreign key se pone en la N en las relaciones 1 - N
 koders - pertenece a una generación (en este caso solo pueden pertenecer a una generación) -> 1 generation - N Koders
 Cuand hay N - N, la fk se pone en la más chica
 Mentores - pertenece a varias generaciones -> N mentors - N generations
@@ -89,7 +89,7 @@ import datetime
 Koder.objects.create(first_name='rito', last_name='yagami', generation='2023',email='rito@gmail.com',phone='3245678',address='takome #130 tokyo, JPN', birthdate=datetime.datetime(2000,09,04))
 select_koders_query = Koder.objects.all()
 # Accesing List Elements
-print(select_koders_query[0].email)  
+print(select_koders_query[0].email)
 print(select_koders_query[0].name)
 print(select_koders_query[1].email)
 print(select_koders_query[1].name)
@@ -122,16 +122,16 @@ from bootcamp.models import Bootcamp, Generation, Mentor, Koder
 
  bootcamp_1 = Bootcamp.objects.create(name="ruby")
  generation_1 = Generation.objects.create(number=1, bootcamp=bootcamp)
- 
+
  Bootcamp.objects.create(name="Go")
  generation_go = Generation.objects.create(number=2, bootcamp_id=2)
- 
+
  generation_js.__dict__
- 
+
  generation
  generation.bootcamp.name
  generation_js.bootcamp.name
- 
+
         Advanced queries Relations
 Generation.objects.filter(bootcamp=bootcamp)
 bootcamp.generations.all()
@@ -147,15 +147,15 @@ generation.mentor.all()
 
 geneartion.mentor.all()
 
-     
+
 
 # Creating Bootcamp
 bootcamp = Bootcamp.objects.create(name="js")
 
 # Creating Koder
 Koder.objects.create(first_name="jesus", last_name="camacho", email="jesus@gmail.com", phone="+52 5516993590", generation=generation_py )
-      
-      
+
+
 # Creating Mentor
 alfredo = Mentor.objects.create(first_name="Alfredo", last_name="Altamirano", email="alfre@gmail.com", phone="+52 55836012")
 alfredo.generations.add(generation_py)   #Var generation_py was previously created
@@ -171,7 +171,7 @@ generation_react.save()   #Saving changes to keep data on DB
 Koder.objects.filter(generation__number=1)
 
 
-# Accesing specific field through models, every double under_score is a jump through models 
+# Accesing specific field through models, every double under_score is a jump through models
 Mentor.objects.filter(generations__bootcamp__name="js")
 
 Mentor.objects.filter(generations__bootcamp__name__startswith="j")
