@@ -14,6 +14,7 @@ Mentores - pertenece a varias generaciones -> N mentors - N generations
 Generaciones - pertenece a un bootcamp  -> 1 bootcamp - N generations
 '''
 
+
 class Bootcamp(models.Model):
     """Bootcamp model."""
     name = models.CharField(max_length=255, unique=True)
@@ -29,7 +30,8 @@ class Generation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     # Foreign key
-    bootcamp = models.ForeignKey(Bootcamp, models.PROTECT, related_name="generations")
+    bootcamp = models.ForeignKey(
+        Bootcamp, models.PROTECT, related_name="generations")
 
     def __str__(self):
         return f"{self.number} {self.bootcamp.name}"
@@ -52,12 +54,13 @@ class Koder(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True)
 
-    #Foreign keys
+    # Foreign keys
     # 1 generation - N Koders
-    generation = models.ForeignKey(Generation, models.PROTECT, related_name="koders")
-
+    generation = models.ForeignKey(
+        Generation, models.PROTECT, related_name="koders")
 
     # Function that represents a Koder
+
     def __str__(self):
         return f"FirstName -> {self.first_name}, LastName -> {self.last_name}, Email -> {self.email}"
 
@@ -75,7 +78,6 @@ class Mentor(models.Model):
 
     def __str__(self):
         return f"id -> {self.pk} {self.first_name}, Email -> {self.last_name}"
-
 
 
 '''
