@@ -32,7 +32,9 @@ class Generation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     # Foreign key
-    bootcamp = models.ForeignKey(Bootcamp, models.PROTECT, related_name="generations")
+    bootcamp = models.ForeignKey(Bootcamp,
+                                 models.PROTECT,
+                                 related_name="generations")
 
     def __str__(self):
         return f"{self.number} {self.bootcamp.name}"
@@ -58,7 +60,9 @@ class Koder(models.Model):
 
     # Foreign keys
     # 1 generation - N Koders
-    generation = models.ForeignKey(Generation, models.PROTECT, related_name="koders")
+    generation = models.ForeignKey(Generation,
+                                   models.PROTECT,
+                                   related_name="koders")
 
     # Function that represents a Koder
 
