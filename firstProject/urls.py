@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Include urls from myApp ("route", including urls file)
     path("myApp/", include("myApp.urls")),
-    path("bootcamp/", include("bootcamp.urls"))
+    path("bootcamp/", include("bootcamp.urls")),
+    path("psicomedic/", include("psicomedic.urls"))
 ]
