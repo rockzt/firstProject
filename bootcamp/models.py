@@ -79,6 +79,7 @@ class Mentor(models.Model):
 
 
 '''
+                        ¡¡¡Some Commands Unsing on Python Shell!!!
 from bootcamp.models import Koder
 import datetime
 Koder.objects.create(first_name='rito', last_name='yagami', generation='2023',email='rito@gmail.com',phone='3245678',address='takome #130 tokyo, JPN', birthdate=datetime.datetime(2000,09,04))
@@ -141,4 +142,49 @@ generation_py.mentors.add(mentor)
 generation.mentor.all()
 
 geneartion.mentor.all()
+
+     
+
+# Creating Bootcamp
+bootcamp = Bootcamp.objects.create(name="js")
+
+# Creating Koder
+Koder.objects.create(first_name="jesus", last_name="camacho", email="jesus@gmail.com", phone="+52 5516993590", generation=generation_py )
+      
+      
+# Creating Mentor
+alfredo = Mentor.objects.create(first_name="Alfredo", last_name="Altamirano", email="alfre@gmail.com", phone="+52 55836012")
+alfredo.generations.add(generation_py)   #Var generation_py was previously created
+
+# Creating Generation
+generation_react = Generation.objects.create(number=2, bootcamp=Bootcamp.objects.get(name="react js"))
+generation_react.number  = 3
+generation_react.save()   #Saving changes to keep data on DB
+
+
+# Lookup Types
+
+Koder.objects.filter(generation__number=1)
+
+
+# Accesing specific field through models, every double under_score is a jump through models 
+Mentor.objects.filter(generations__bootcamp__name="js")
+
+Mentor.objects.filter(generations__bootcamp__name__startswith="j")
+
+# First Record Created
+Koder.objects.all().first()
+
+# Last Record Created
+Koder.objects.all().last()
+
+# More combination
+Koder.objects.filter(first_name__contains = 'a').first()
+
+# Inverted Relations using filter() , bootcamp donde esten los koders que su apellido contenga 'ez', accessing relations on an inverted way.
+Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').Koder.name
+
+# Previous query, no duplicates
+In [28]: Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').distinct()
+
 '''
