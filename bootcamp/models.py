@@ -5,18 +5,19 @@ from django.db import models
 # Los modelos heredan del modelo predeterminado de Django
 # Cada modelo representa una tabla de SQL
 # Cada propiead de la clase(modelo) representa un atributo en la tabla
-'''
+"""
                                 Relaciones
 La foreign key se pone en la N en las relaciones 1 - N                                
 koders - pertenece a una generación (en este caso solo pueden pertenecer a una generación) -> 1 generation - N Koders
 Cuand hay N - N, la fk se pone en la más chica
 Mentores - pertenece a varias generaciones -> N mentors - N generations
 Generaciones - pertenece a un bootcamp  -> 1 bootcamp - N generations
-'''
+"""
 
 
 class Bootcamp(models.Model):
     """Bootcamp model."""
+
     name = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -26,12 +27,12 @@ class Bootcamp(models.Model):
 
 class Generation(models.Model):
     """Generation model."""
+
     number = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     # Foreign key
-    bootcamp = models.ForeignKey(
-        Bootcamp, models.PROTECT, related_name="generations")
+    bootcamp = models.ForeignKey(Bootcamp, models.PROTECT, related_name="generations")
 
     def __str__(self):
         return f"{self.number} {self.bootcamp.name}"
@@ -39,10 +40,11 @@ class Generation(models.Model):
 
 class Koder(models.Model):
     """Koder Model."""
+
     STATUSES = [
         ("active", "Active"),
         ("inactive", "Inactive"),
-        ("finished", "Finished")
+        ("finished", "Finished"),
     ]
 
     first_name = models.CharField(max_length=255)
@@ -56,8 +58,7 @@ class Koder(models.Model):
 
     # Foreign keys
     # 1 generation - N Koders
-    generation = models.ForeignKey(
-        Generation, models.PROTECT, related_name="koders")
+    generation = models.ForeignKey(Generation, models.PROTECT, related_name="koders")
 
     # Function that represents a Koder
 
@@ -67,6 +68,7 @@ class Koder(models.Model):
 
 class Mentor(models.Model):
     """Mentor model."""
+
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
@@ -80,7 +82,7 @@ class Mentor(models.Model):
         return f"id -> {self.pk} {self.first_name}, Email -> {self.last_name}"
 
 
-'''
+"""
                         ¡¡¡Some Commands Unsing on Python Shell!!!
 from bootcamp.models import Koder
 import datetime
@@ -189,4 +191,4 @@ Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').Koder.n
 # Previous query, no duplicates
 In [28]: Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').distinct()
 
-'''
+"""
