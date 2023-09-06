@@ -187,4 +187,9 @@ Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').Koder.n
 # Previous query, no duplicates
 In [28]: Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').distinct()
 
+# Mostrar mentor los alumnos que pertenecen a una generación
+In [9]: Koder.objects.filter(generation__mentors__id  = 1)
+
+# Mostrar todos los koders, excepto los que pertenezcan al ultimo bootcamp
+In [11]: Koder.objects.exclude(generation__bootcamp =  Bootcamp.objects.last())
 '''

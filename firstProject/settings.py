@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Custom app
     "myApp",
     "bootcamp",
+    "psicomedic",
 
     # Bootstrap library link
     "bootstrap5"
