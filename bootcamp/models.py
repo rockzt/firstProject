@@ -5,17 +5,19 @@ from django.db import models
 # Los modelos heredan del modelo predeterminado de Django
 # Cada modelo representa una tabla de SQL
 # Cada propiead de la clase(modelo) representa un atributo en la tabla
-'''
+"""
                                 Relaciones
-La foreign key se pone en la N en las relaciones 1 - N                                
+La foreign key se pone en la N en las relaciones 1 - N
 koders - pertenece a una generación (en este caso solo pueden pertenecer a una generación) -> 1 generation - N Koders
 Cuand hay N - N, la fk se pone en la más chica
 Mentores - pertenece a varias generaciones -> N mentors - N generations
 Generaciones - pertenece a un bootcamp  -> 1 bootcamp - N generations
-'''
+"""
+
 
 class Bootcamp(models.Model):
     """Bootcamp model."""
+
     name = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -25,11 +27,14 @@ class Bootcamp(models.Model):
 
 class Generation(models.Model):
     """Generation model."""
+
     number = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     # Foreign key
-    bootcamp = models.ForeignKey(Bootcamp, models.PROTECT, related_name="generations")
+    bootcamp = models.ForeignKey(Bootcamp,
+                                 models.PROTECT,
+                                 related_name="generations")
 
     def __str__(self):
         return f"{self.number} {self.bootcamp.name}"
@@ -37,10 +42,11 @@ class Generation(models.Model):
 
 class Koder(models.Model):
     """Koder Model."""
+
     STATUSES = [
         ("active", "Active"),
         ("inactive", "Inactive"),
-        ("finished", "Finished")
+        ("finished", "Finished"),
     ]
 
     first_name = models.CharField(max_length=255)
@@ -52,18 +58,21 @@ class Koder(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True)
 
-    #Foreign keys
+    # Foreign keys
     # 1 generation - N Koders
-    generation = models.ForeignKey(Generation, models.PROTECT, related_name="koders")
-
+    generation = models.ForeignKey(Generation,
+                                   models.PROTECT,
+                                   related_name="koders")
 
     # Function that represents a Koder
+
     def __str__(self):
         return f"FirstName -> {self.first_name}, LastName -> {self.last_name}, Email -> {self.email}"
 
 
 class Mentor(models.Model):
     """Mentor model."""
+
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
@@ -77,15 +86,14 @@ class Mentor(models.Model):
         return f"id -> {self.pk} {self.first_name}, Email -> {self.last_name}"
 
 
-
-'''
+"""
                         ¡¡¡Some Commands Unsing on Python Shell!!!
 from bootcamp.models import Koder
 import datetime
 Koder.objects.create(first_name='rito', last_name='yagami', generation='2023',email='rito@gmail.com',phone='3245678',address='takome #130 tokyo, JPN', birthdate=datetime.datetime(2000,09,04))
 select_koders_query = Koder.objects.all()
 # Accesing List Elements
-print(select_koders_query[0].email)  
+print(select_koders_query[0].email)
 print(select_koders_query[0].name)
 print(select_koders_query[1].email)
 print(select_koders_query[1].name)
@@ -118,16 +126,16 @@ from bootcamp.models import Bootcamp, Generation, Mentor, Koder
 
  bootcamp_1 = Bootcamp.objects.create(name="ruby")
  generation_1 = Generation.objects.create(number=1, bootcamp=bootcamp)
- 
+
  Bootcamp.objects.create(name="Go")
  generation_go = Generation.objects.create(number=2, bootcamp_id=2)
- 
+
  generation_js.__dict__
- 
+
  generation
  generation.bootcamp.name
  generation_js.bootcamp.name
- 
+
         Advanced queries Relations
 Generation.objects.filter(bootcamp=bootcamp)
 bootcamp.generations.all()
@@ -143,15 +151,15 @@ generation.mentor.all()
 
 geneartion.mentor.all()
 
-     
+
 
 # Creating Bootcamp
 bootcamp = Bootcamp.objects.create(name="js")
 
 # Creating Koder
 Koder.objects.create(first_name="jesus", last_name="camacho", email="jesus@gmail.com", phone="+52 5516993590", generation=generation_py )
-      
-      
+
+
 # Creating Mentor
 alfredo = Mentor.objects.create(first_name="Alfredo", last_name="Altamirano", email="alfre@gmail.com", phone="+52 55836012")
 alfredo.generations.add(generation_py)   #Var generation_py was previously created
@@ -167,7 +175,7 @@ generation_react.save()   #Saving changes to keep data on DB
 Koder.objects.filter(generation__number=1)
 
 
-# Accesing specific field through models, every double under_score is a jump through models 
+# Accesing specific field through models, every double under_score is a jump through models
 Mentor.objects.filter(generations__bootcamp__name="js")
 
 Mentor.objects.filter(generations__bootcamp__name__startswith="j")
@@ -187,4 +195,4 @@ Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').Koder.n
 # Previous query, no duplicates
 In [28]: Bootcamp.objects.filter(generations__koders__last_name__contains = 'ez').distinct()
 
-'''
+"""
